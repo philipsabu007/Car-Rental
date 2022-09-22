@@ -45,7 +45,7 @@ if($row){
   echo"<script>alert('Login Success!');</script>";
 }
 else{
-  echo"<script>alert('Login Failed!');</script>";
+  echo"<script>alert('Invalid User!');</script>";
 }
   }
 }
