@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Login Form </title>
-  <link rel="stylesheet" href="login_style.css">
+  <link rel="stylesheet" href="login.css">
   <!--<p style="background-image: url('pic.jpg');">-->
 </head>
 <body>
@@ -24,6 +24,7 @@
 </html>
 
 
+
 <?php
 if($_SERVER['REQUEST_METHOD']=="POST" && ISSET($_POST['submit'])){
   $connx=mysqli_connect("localhost","root","","car_rental");
@@ -36,13 +37,16 @@ if($_SERVER['REQUEST_METHOD']=="POST" && ISSET($_POST['submit'])){
   @$Email=$_POST['Email'];
   @$Pass=$_POST['Pass'];
 
-  $sql="SELECT * FROM `crt_registration` WHERE `Email`='$Email';";
+  $sql="SELECT * FROM `crt_registration` WHERE `Email`='$Email' and `Pass`='$Pass' ;";
 $result = mysqli_query($connx, $sql);
 $row = mysqli_fetch_assoc($result);
 
 
 if($row){
   echo"<script>alert('Login Success!');</script>";
+  header("Location: http://localhost/CarRental/home.html");
+
+
 }
 else{
   echo"<script>alert('Invalid User!');</script>";
